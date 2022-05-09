@@ -10,13 +10,25 @@ import java.util.List;
 @Service
 public class AddressbookService implements IAddressbookService {
 
+    /**
+     * Used arraylist to Store the data
+     */
     List<AddressbookData> addressbookDataList = new ArrayList<>();
 
+    /**
+     * Method to get all stored data
+     * @return
+     */
     @Override
     public List<AddressbookData> getAddressbookData() {
         return addressbookDataList;
     }
 
+    /**
+     * Method to get indiviual data by id
+     * @param personId
+     * @return
+     */
     @Override
     public AddressbookData getAddressbookDataById(int personId) {
         AddressbookData addressbookData = null;
@@ -24,6 +36,11 @@ public class AddressbookService implements IAddressbookService {
         return addressbookData;
     }
 
+    /**
+     * Method to store Address book data into Array
+     * @param addressbookDTO
+     * @return
+     */
     @Override
     public AddressbookData createAddressbooData(AddressbookDTO addressbookDTO) {
         AddressbookData addressbookData = null;
@@ -32,6 +49,9 @@ public class AddressbookService implements IAddressbookService {
         return addressbookData;
     }
 
+    /**
+     * Method to update Data stored in array
+     */
     @Override
     public AddressbookData updateAddressbookData(int personId, AddressbookDTO addressbookDTO) {
         AddressbookData addressbookData = this.getAddressbookDataById(personId);
@@ -41,6 +61,10 @@ public class AddressbookService implements IAddressbookService {
         return addressbookData;
     }
 
+    /**
+     * Method to delete data in array
+     * @param personId
+     */
     @Override
     public void deleteAddressbooData(int personId) {
         int i = 1;

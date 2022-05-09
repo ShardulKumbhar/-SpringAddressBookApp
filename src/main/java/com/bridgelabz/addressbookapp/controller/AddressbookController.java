@@ -15,9 +15,17 @@ import java.util.List;
 @RequestMapping("/addressbook")
 public class AddressbookController {
 
+    /**
+     * autowiring Interface
+     */
     @Autowired
     IAddressbookService addressbooService;
 
+    /**
+     *To get all data stored
+     * http://localhost:8080/addressbook/get
+     * @return
+     */
     @RequestMapping(value = {"/get"})
     public ResponseEntity<ResponseDTO> getAddressbookData() {
         List<AddressbookData> addressbookDataList = null;
@@ -26,6 +34,12 @@ public class AddressbookController {
         return new ResponseEntity<>(responseDTO,HttpStatus.OK);
     }
 
+    /**
+     * To call by id
+     * http://localhost:8080/addressbook/get/1
+     * @param personId
+     * @return
+     */
     @GetMapping("/get/{personId}")
     public ResponseEntity<ResponseDTO> getAddressbookData(@PathVariable(value = "personId") int personId) {
         AddressbookData addressbookData = null;
@@ -34,6 +48,15 @@ public class AddressbookController {
         return new ResponseEntity<>(responseDTO,HttpStatus.OK);
     }
 
+    /**
+     * To add/create addressbook with json format
+     * http://localhost:8080/addressbook/create
+     * body-{
+     *     "name" : "Shardul",
+     *     "phNumber" : "Kumbhar"
+     * }
+     *
+     */
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> addAddressbookData(@RequestBody AddressbookDTO addressbookDTO) {
         AddressbookData addressbookData = null;
@@ -42,6 +65,13 @@ public class AddressbookController {
         return new ResponseEntity<>(responseDTO,HttpStatus.OK);
     }
 
+    /**
+     * TO update the data by json body
+     * http://localhost:8080/addressbook/update/1
+     * @param personId
+     * @param addressbookDTO
+     * @return
+     */
     @PutMapping("/update/{personId}")
     public ResponseEntity<ResponseDTO> updateAddressbookData(@PathVariable int personId,@RequestBody AddressbookDTO addressbookDTO){
         AddressbookData addressbookData = null;
@@ -50,6 +80,12 @@ public class AddressbookController {
         return new ResponseEntity<>(responseDTO,HttpStatus.OK);
     }
 
+    /**
+     * To Delete the date by ID
+     * http://localhost:8080/addressbook/delete/1
+     * @param personId
+     * @return
+     */
     @DeleteMapping("/delete/{personId}")
     public ResponseEntity<ResponseDTO> deleteAddressbookData(@PathVariable("personId") int personId) {
         addressbooService.deleteAddressbooData(personId);

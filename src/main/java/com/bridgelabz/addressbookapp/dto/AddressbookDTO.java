@@ -1,5 +1,8 @@
 package com.bridgelabz.addressbookapp.dto;
 
+/**
+ * Entity type
+ */
 public class AddressbookDTO {
     public String name;
     public String phNumber;
